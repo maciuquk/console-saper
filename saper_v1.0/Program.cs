@@ -18,11 +18,14 @@ namespace MineSwepperv1._0
         {
 
             AllocateTheBombs();
+
+            // main loop
             do
             {
                 displayTheMinefield();
                 playerMove();
                 Console.Clear();
+
             } while (true);
 
 
@@ -137,6 +140,7 @@ namespace MineSwepperv1._0
 
         public static void displayTheMinefield()
         {
+            
             Console.WriteLine();
             Console.WriteLine("      Gra Saper!");
             Console.WriteLine();
