@@ -10,9 +10,9 @@ namespace MineSwepperv1._0
     {
         public static int minefieldWidth = 10;
         public static int minefieldHeight = 10;
-        public static char[,] bombLocated = new char[minefieldWidth, minefieldHeight];  // tablica z bombami
-        public static int[,] bombLocated2 = new int[minefieldWidth, minefieldHeight]; // tablica z liczbami
-        public static int[,] bombLocated3 = new int[minefieldWidth, minefieldHeight]; // tablica2 wyświetlana z liczbami
+        public static char[,] bombLocated = new char[minefieldWidth, minefieldHeight];  // bomb matrix
+        public static int[,] bombLocated2 = new int[minefieldWidth, minefieldHeight]; // numbers matrix
+        public static int[,] bombLocated3 = new int[minefieldWidth, minefieldHeight]; // third martix to show
         public static int numbersOfBombs = 5;
         static void Main(string[] args)
         {
@@ -47,7 +47,7 @@ namespace MineSwepperv1._0
             {
                 for (int y1 = 0; y1 < minefieldHeight; y1++)
                 {
-                    // sprawdzanie otoczenia danego pola
+                    // left & right + up & down check
                     if (x1 < minefieldHeight - 1 && bombLocated[x1 + 1,y1] == 'B')
                     {
                         count++;
@@ -65,7 +65,7 @@ namespace MineSwepperv1._0
                         count++;
                     }
 
-                    // sprawdzanie po skosie
+                    // diagonally check
                     if (( x1 > 0 && y1 < minefieldWidth - 1 && y1 > 0) && (bombLocated[x1 - 1,y1 - 1] == 'B'))
                     {
                         count++;
@@ -86,7 +86,7 @@ namespace MineSwepperv1._0
                     bombLocated2[x1, y1] = count;
                     count = 0;
 
-                    // wstawianie 9 jak jest bomba
+                    // put 9 if there is a bomb
                     if (bombLocated[x1, y1] == 'B')
                     {
                         bombLocated2[x1, y1] = 9;
@@ -102,7 +102,7 @@ namespace MineSwepperv1._0
                 }
             }
 
-            // display the 2nd minefield
+            // display the 2nd minefield - remove it from the last version
             Console.WriteLine();
             for (int xx1 = 0; xx1 < minefieldWidth; xx1++)
             {
@@ -206,23 +206,7 @@ namespace MineSwepperv1._0
             {
                 bombLocated3[inputY, inputX] = 99;
             }
-
-            
-                    
-
-            
-            
-            
-            
-            // if (input == "x" || input =="X)
-               // {
-                //    Environment.Exit(0);
-               // }
-//
-              //  else if (input =="p" ||| in)
-
-
-            
+ 
         }
     }
 }
